@@ -6,7 +6,6 @@
 - [Usage](#usage)
 - [Learning Objectives](#learning-objectives)
 - [Requirements](#requirements)
-- [Authors](#authors)
 
 ## Description
 
