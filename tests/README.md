@@ -22,7 +22,9 @@ To run the tests locally, you need Python3 installed. Clone the repository and n
    ```
 
 3. Run the tests:
+   ```
    python3 -m unittest tests/test_models/test_base_model.py
+   ```
 
 ## 🔍 What's Tested?
 
