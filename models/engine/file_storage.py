@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 import json
-from models.base_model import BaseModel
 
 
 class FileStorage:
@@ -60,8 +59,10 @@ class FileStorage:
             with open(FileStorage.__file_path, "r", encoding="utf-8") as f:
                 objs = json.load(f)
                 for key, value in objs.items():
-                    cls = value["__class__"]
-                    instance = eval(cls)(**value)
+                    cls_name = value["__class__"]
+                    if cls_name == "BaseModel":
+                        from models.base_model import BaseModel
+                    instance = eval(cls_name)(**value)
                     FileStorage.__objects[key] = instance
         except FileNotFoundError:
             pass
