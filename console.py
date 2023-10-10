@@ -29,19 +29,19 @@ class HBNBCommand(cmd.Cmd):
         self.last_output = output
 
     def do_create(self, args):
-    """Creates a new instance of BaseModel or User"""
-    if not args:
-        print("** class name missing **")
-    elif args == "BaseModel":
-        new_instance = BaseModel()
-        new_instance.save()
-        print(new_instance.id)
-    elif args == "User":    # Handle User instances
-        new_instance = User()
-        new_instance.save()
-        print(new_instance.id)
-    else:
-        print("** class doesn't exist **")
+        """Creates a new instance of BaseModel or User"""
+        if not args:
+            print("** class name missing **")
+        elif args == "BaseModel":
+            new_instance = BaseModel()
+            new_instance.save()
+            print(new_instance.id)
+        elif args == "User":    # Handle User instances
+            new_instance = User()
+            new_instance.save()
+            print(new_instance.id)
+        else:
+            print("** class doesn't exist **")
 
     def do_show(self, args):
         """Prints the string representation of an instance"""
