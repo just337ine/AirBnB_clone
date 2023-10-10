@@ -29,22 +29,26 @@ class HBNBCommand(cmd.Cmd):
         self.last_output = output
 
     def do_create(self, args):
-        """Creates a new instance of BaseModel or User"""
-        if not args:
-            print("** class name missing **")
-        elif args not in ["BaseModel"]:
-            print("** class doesn't exist **")
-        else:
-            new_instance = BaseModel()
-            new_instance.save()
-            print(new_instance.id)
+    """Creates a new instance of BaseModel or User"""
+    if not args:
+        print("** class name missing **")
+    elif args == "BaseModel":
+        new_instance = BaseModel()
+        new_instance.save()
+        print(new_instance.id)
+    elif args == "User":    # Handle User instances
+        new_instance = User()
+        new_instance.save()
+        print(new_instance.id)
+    else:
+        print("** class doesn't exist **")
 
     def do_show(self, args):
         """Prints the string representation of an instance"""
         args_list = args.split()
         if not args:
             print("** class name missing **")
-        elif args_list[0] not in ["BaseModel"]:
+        elif args_list[0] not in ["BaseModel", "User"]:
             print("** class doesn't exist **")
         elif len(args_list) < 2:
             print("** instance id missing **")
@@ -60,7 +64,7 @@ class HBNBCommand(cmd.Cmd):
         args_list = args.split()
         if not args:
             print("** class name missing **")
-        elif args_list[0] not in ["BaseModel"]:
+        elif args_list[0] not in ["BaseModel", "User"]:
             print("** class doesn't exist **")
         elif len(args_list) < 2:
             print("** instance id missing **")
@@ -74,7 +78,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, args):
         """Prints all string representation of all instances"""
-        if args and args not in ["BaseModel"]:
+        if args and args not in ["BaseModel", "User"]:
             print("** class doesn't exist **")
         else:
             all_objects = [str(obj) for obj in storage.all().values()]
@@ -85,7 +89,7 @@ class HBNBCommand(cmd.Cmd):
         args_list = args.split()
         if not args:
             print("** class name missing **")
-        elif args_list[0] not in ["BaseModel"]:
+        elif args_list[0] not in ["BaseModel", "User"]:
             print("** class doesn't exist **")
         elif len(args_list) < 2:
             print("** instance id missing **")
