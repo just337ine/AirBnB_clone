@@ -35,7 +35,7 @@ This script tests the BaseModel class which defines all common attributes/method
 
 This script tests the recreation of a BaseModel from another one using its dictionary representation. The key methods involved here are `to_dict()` and the `__init__` method that accepts `*args` and `**kwargs`.
 - **How to Run**: 
-        ```bash
+        ```
         ./Task-4-test.py
         ```
 
@@ -43,7 +43,7 @@ This script tests the recreation of a BaseModel from another one using its dicti
 
 This script tests the persistence of the BaseModel objects. It checks the serialization of the objects into a JSON file and the subsequent deserialization back into BaseModel objects. The primary class handling this is the `FileStorage` class which manages the JSON file serialization and deserialization.
 - **How to Run**: 
-        ```bash
+        ```
         ./Task-5-test.py
         ```
 
@@ -52,6 +52,6 @@ This script tests the persistence of the BaseModel objects. It checks the serial
 
 To execute any script, navigate to the `Demos` directory and run the corresponding task. For example:
 
-```bash
+```
 cd Demos/
 ./Task-3-test.py
