@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import json
+import importlib
 
 
 class FileStorage:
@@ -62,8 +63,8 @@ class FileStorage:
                     cls_name = value["__class__"]
                     if cls_name == "BaseModel":
                         # Dynamically import the class based on its name
-                        exec("from models.{} import {}"
-                             .format(cls_name.lower(), cls_name))
+                        module = importlib.import_module("models." + cls_name.lower())
+                        cls = getattr(module, cls_name)
                     instance = eval(cls_name)(**value)
                     FileStorage.__objects[key] = instance
         except FileNotFoundError:
