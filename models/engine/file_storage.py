@@ -61,7 +61,8 @@ class FileStorage:
                 for key, value in objs.items():
                     cls_name = value["__class__"]
                     if cls_name == "BaseModel":
-                        from models.base_model import BaseModel
+                        # Dynamically import the class based on its name
+                        exec("from models.{} import {}".format(cls_name.lower(), cls_name))
                     instance = eval(cls_name)(**value)
                     FileStorage.__objects[key] = instance
         except FileNotFoundError:
