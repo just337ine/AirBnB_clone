@@ -8,11 +8,11 @@ The `Demos` folder contains test scripts that ensure the functionality of differ
 
 ## 📂 File Structure:
 
-AirBnB_clone/
-└── Demos/
-    ├── 🚀 Task-3-test.py - BaseModel Test for Task 3
-    ├── 🌌 Task-4-test.py - Create BaseModel from Dictionary for Task 4
-    └── 🪐 Task-5-test.py - Store First Object for Task 5
+### AirBnB_clone
+- **Demos/**
+  - 🚀 **Task-3-test.py** - BaseModel Test for Task 3
+  - 🌌 **Task-4-test.py** - Create BaseModel from Dictionary for Task 4
+  - 🪐 **Task-5-test.py** - Store First Object for Task 5
 
 ## 🎯 Descriptions:
 
