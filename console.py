@@ -3,6 +3,7 @@ import cmd
 import os
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
+from models.user import User
 
 storage = FileStorage()
 storage.reload()
@@ -28,7 +29,7 @@ class HBNBCommand(cmd.Cmd):
         self.last_output = output
 
     def do_create(self, args):
-        """Creates a new instance of BaseModel"""
+        """Creates a new instance of BaseModel or User"""
         if not args:
             print("** class name missing **")
         elif args not in ["BaseModel"]:
