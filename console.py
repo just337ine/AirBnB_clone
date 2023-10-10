@@ -1,6 +1,11 @@
 #!/usr/bin/python3
 import cmd
 import os
+from models.base_model import BaseModel
+from models.engine.file_storage import FileStorage
+
+storage = FileStorage()
+storage.reload()
 
 
 class HBNBCommand(cmd.Cmd):
@@ -99,6 +104,10 @@ class HBNBCommand(cmd.Cmd):
                     attr_value = attr_value[1:-1]
                     setattr(storage.all()[key], attr_name, attr_value)
                     storage.all()[key].save()
+
+    def do_clear(self, args):
+        """Clear the terminal."""
+        os.system('cls' if os.name == 'nt' else 'clear')
 
     def help_quit(self):
         """Quit command to exit the program"""
