@@ -22,6 +22,84 @@ class HBNBCommand(cmd.Cmd):
         print(output)
         self.last_output = output
 
+    def do_create(self, args):
+        """Creates a new instance of BaseModel"""
+        if not args:
+            print("** class name missing **")
+        elif args not in ["BaseModel"]:
+            print("** class doesn't exist **")
+        else:
+            new_instance = BaseModel()
+            new_instance.save()
+            print(new_instance.id)
+
+    def do_show(self, args):
+        """Prints the string representation of an instance"""
+        args_list = args.split()
+        if not args:
+            print("** class name missing **")
+        elif args_list[0] not in ["BaseModel"]:
+            print("** class doesn't exist **")
+        elif len(args_list) < 2:
+            print("** instance id missing **")
+        else:
+            key = args_list[0] + "." + args_list[1]
+            if key not in storage.all().keys():
+                print("** no instance found **")
+            else:
+                print(storage.all()[key])
+
+    def do_destroy(self, args):
+        """Deletes an instance based on the class name and id"""
+        args_list = args.split()
+        if not args:
+            print("** class name missing **")
+        elif args_list[0] not in ["BaseModel"]:
+            print("** class doesn't exist **")
+        elif len(args_list) < 2:
+            print("** instance id missing **")
+        else:
+            key = args_list[0] + "." + args_list[1]
+            if key not in storage.all().keys():
+                print("** no instance found **")
+            else:
+                del storage.all()[key]
+                storage.save()
+
+    def do_all(self, args):
+        """Prints all string representation of all instances"""
+        if args and args not in ["BaseModel"]:
+            print("** class doesn't exist **")
+        else:
+            all_objects = [str(obj) for obj in storage.all().values()]
+            print(all_objects)
+
+    def do_update(self, args):
+        """Updates an instance based on the class name and id"""
+        args_list = args.split()
+        if not args:
+            print("** class name missing **")
+        elif args_list[0] not in ["BaseModel"]:
+            print("** class doesn't exist **")
+        elif len(args_list) < 2:
+            print("** instance id missing **")
+        elif len(args_list) < 3:
+            print("** attribute name missing **")
+        elif len(args_list) < 4:
+            print("** value missing **")
+        else:
+            key = args_list[0] + "." + args_list[1]
+            if key not in storage.all().keys():
+                print("** no instance found **")
+            else:
+                attr_name = args_list[2]
+                attr_value = args_list[3]
+                # remove quotes from attr_value
+                if attr_value[0] == '"' and attr_value[-1] == '"':
+                    attr_value = attr_value[1:-1]
+                    setattr(storage.all()[key], attr_name, attr_value)
+                    storage.all()[key].save()
+
     def help_quit(self):
         """Quit command to exit the program"""
         print("Quit command to exit the program")
