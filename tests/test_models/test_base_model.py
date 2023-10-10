@@ -18,7 +18,9 @@ class TestBaseModel(unittest.TestCase):
     def test_str_method(self):
         """Test to check the __str__ method of BaseModel"""
         my_model = BaseModel()
-        expected_output = "[BaseModel] ({}) {}".format(my_model.id, my_model.__dict__)
+        expected_output = "[BaseModel] ({}) {}".format(
+                my_model.id, my_model.__dict__
+        )
         self.assertEqual(expected_output, str(my_model))
 
     def test_save_method(self):
@@ -45,7 +47,10 @@ class TestBaseModel(unittest.TestCase):
         my_model_json = my_model.to_dict()
         my_new_model = BaseModel(**my_model_json)
 
-        # Assert the new model has the same id and attributes, but is not the same object
+        """
+        Assert the new model has the same id and
+        attributes, but is not the same object
+        """
         self.assertEqual(my_model.id, my_new_model.id)
         self.assertEqual(my_model.name, my_new_model.name)
         self.assertEqual(my_model.my_number, my_new_model.my_number)
