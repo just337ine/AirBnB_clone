@@ -17,7 +17,10 @@ class FileStorage:
         save(): Serialize the __objects to a JSON file.
         reload(): Deserialize the JSON file to __objects.
     """
-
+    class_to_module_map = {
+        'BaseModel': 'base_model',
+        'User': 'user' 
+    
     __file_path = "file.json"
     __objects = {}
 
@@ -63,8 +66,10 @@ class FileStorage:
                     cls_name = value["__class__"]
                     if cls_name == "BaseModel":
                         # Dynamically import the class based on its name
-                        module = importlib.import_module("models." + cls_name.lower())
+                        module_name = class_to_module_map.get(cls_name, cls_name.lower())
+                        module = importlib.import_module("models." + module_name)
                         cls = getattr(module, cls_name)
+                        
                     instance = eval(cls_name)(**value)
                     FileStorage.__objects[key] = instance
         except FileNotFoundError:
