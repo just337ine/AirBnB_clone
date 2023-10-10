@@ -14,7 +14,7 @@ To run the tests locally, you need Python3 installed. Clone the repository and n
 
 1. Clone the repository:
    ```bash
-   git clone []
+   git clone [https://github.com/ugwujustine/AirBnB_clone.git]
 
 2. Navigate to the repository:
    ```
