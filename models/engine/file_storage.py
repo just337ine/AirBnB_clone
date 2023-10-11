@@ -21,11 +21,14 @@ class FileStorage:
     __file_path = "file.json"
     __objects = {}
 
-    def all(self):
+    def all(self, class_name=None):
         """
         Returns:
-            dict: The dictionary __objects.
+            dict: The dictionary of __objects, optionally filtered by class name.
         """
+        if class_name:
+            return {k: v for k, v in FileStorage.__objects.items()
+                    if class_name == k.split('.')[0]}
         return FileStorage.__objects
 
     def new(self, obj):
