@@ -161,8 +161,8 @@ class HBNBCommand(cmd.Cmd):
                              if k.startswith(class_name)]
                 print(list_objs)
             else:
-                print("** class doesn't exist **")                 
-    
+                print("** class doesn't exist **")
+
     def help_quit(self):
         """Quit command to exit the program"""
         print("Quit command to exit the program")
