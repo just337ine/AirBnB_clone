@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import cmd
 import os
+import json
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 from models.user import User
@@ -209,12 +210,12 @@ class HBNBCommand(cmd.Cmd):
                 update_dict = json.loads(dict_str)
                 if not isinstance(update_dict, dict):
                     raise Exception()
-           except Exception:
-               print("** unable to process dictionary **")
-               return
-           for attr, value in update_dict.items():
-               setattr(storage.all()[key], attr, value)
-           storage.all()[key].save()
+            except Exception:
+                print("** unable to process dictionary **")
+                return
+            for attr, value in update_dict.items():
+                setattr(storage.all()[key], attr, value)
+                storage.all()[key].save()
         else:
             print("** method doesn't exist **")
 
