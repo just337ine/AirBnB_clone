@@ -1,6 +1,13 @@
 #!/usr/bin/python3
 import json
 import re
+from models.base_model import BaseModel
+from models.user import User
+from models.place import Place
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
 
 
 class FileStorage:
@@ -75,20 +82,20 @@ class FileStorage:
         except FileNotFoundError:
             pass
 
-        def classes(self):
+       # def classes(self):
             """
             Return a dictionary of available classes for the
             deserialization process.
             Update this dictionary as new classes are added.
             """
-            classes = {
-                    'BaseModel': BaseModel,
-                    'User': User,
-                    'State': State,
-                    'City': City,
-                    'Place': Place,
-                    'Review': Review,
-                    'Amenity': Amenity
-                    }
-            return classes
+         #   classes = {
+          #          'BaseModel': BaseModel,
+          #          'User': User,
+           #         'State': State,
+           #         'City': City,
+           #         'Place': Place,
+           #         'Review': Review,
+            #        'Amenity': Amenity
+        #            }
+           # return classes
 
