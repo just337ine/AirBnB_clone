@@ -193,6 +193,28 @@ class HBNBCommand(cmd.Cmd):
             else:
                 del storage.all()[key]
                 storage.save()
+        # Handle 'update' method
+        elif method_name == "update":
+            args_split = method_and_args[1].split('), ')
+            if len(args_split) != 2:
+                print("** invalid format **")
+                return
+            instance_id = args_split[0].split(')')[0].replace('"', '')
+            key = "{}.{}".format(class_name, instance_id)
+            if key not in storage.all().keys():
+                print("** no instance found **")
+                return
+            dict_str = args_split[1].replace("'", '"')
+            try:
+                update_dict = json.loads(dict_str)
+                if not isinstance(update_dict, dict):
+                    raise Exception()
+           except Exception:
+               print("** unable to process dictionary **")
+               return
+           for attr, value in update_dict.items():
+               setattr(storage.all()[key], attr, value)
+           storage.all()[key].save()
         else:
             print("** method doesn't exist **")
 
