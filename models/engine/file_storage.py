@@ -24,7 +24,8 @@ class FileStorage:
     def all(self, class_name=None):
         """
         Returns:
-            dict: The dictionary of __objects, optionally filtered by class name.
+            dict: The dictionary of __objects,
+            optionally filtered by class name.
         """
         if class_name:
             return {k: v for k, v in FileStorage.__objects.items()
