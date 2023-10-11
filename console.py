@@ -151,7 +151,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
         class_name = line_parts[0]
-        method_name = line_parts[1]
+        method_name = line_parts[1].split('(')
+        method_name = method_and_args[0]
         # Handle 'all' method
         if method_name == "all()":
             if class_name in ["BaseModel", "User", "Place", "State",
@@ -170,6 +171,17 @@ class HBNBCommand(cmd.Cmd):
                 print(len(objects))
             else:
                 print("** class doesn't exist **")
+        # Handle 'show' method
+        elif method_name == "show":
+            if len(method_and_args) != 2:
+                print("** instance id missing **")
+                return
+            instance_id = method_and_args[1].split(')')[0].replace('"', '')
+            key = "{}.{}".format(class_name, instance_id)
+            if key not in storage.all().keys():
+                print("** no instance found **")
+            else:
+                print(storage.all()[key])
         else:
             print("** method doesn't exist **")
 
