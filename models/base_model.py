@@ -43,7 +43,7 @@ class BaseModel:
         Returns a dictionary containing all
         keys/values of __dict__ of the instance
         """
-        instance_dict = (
+        instance_dict = (  ## is the bracket necessary
             self.__dict__.copy()
         )  # Creating a copy to not alter the original __dict__
         instance_dict["__class__"] = self.__class__.__name__
