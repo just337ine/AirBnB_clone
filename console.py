@@ -172,7 +172,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** class doesn't exist **")
         else:
             print("** method doesn't exist **")
-            
+
     def help_quit(self):
         """Quit command to exit the program"""
         print("Quit command to exit the program")
