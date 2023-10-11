@@ -157,8 +157,8 @@ class HBNBCommand(cmd.Cmd):
             if class_name in ["BaseModel", "User", "Place", "State",
                               "City", "Amenity", "Review"]:
                 objects = storage.all(class_name)
-                list_objs = [str(v) for k, v in
-                             objects.items() if k.startswith(class_name)]
+                list_objs = [str(v) for k, v in objects.items()
+                             if k.startswith(class_name)]
                 print(list_objs)
             else:
                 print("** class doesn't exist **")                
