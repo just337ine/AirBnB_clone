@@ -162,7 +162,17 @@ class HBNBCommand(cmd.Cmd):
                 print(list_objs)
             else:
                 print("** class doesn't exist **")
-
+        # Handle 'count()' method
+        elif method_name == "count()":
+            if class_name in ["BaseModel", "User", "Place", "State",
+                              "City", "Amenity", "Review"]:
+                objects = storage.all(class_name)
+                print(len(objects))
+            else:
+                print("** class doesn't exist **")
+        else:
+            print("** method doesn't exist **")
+            
     def help_quit(self):
         """Quit command to exit the program"""
         print("Quit command to exit the program")
