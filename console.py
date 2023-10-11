@@ -74,7 +74,8 @@ class HBNBCommand(cmd.Cmd):
         args_list = args.split()
         if not args:
             print("** class name missing **")
-        elif args_list[0] not in ["BaseModel", "User", "Place", "State", "City", "Amenity", "Review"]:
+        elif args_list[0] not in ["BaseModel", "User", "Place", "State",
+                                  "City", "Amenity", "Review"]:
             print("** class doesn't exist **")
         elif len(args_list) < 2:
             print("** instance id missing **")
@@ -90,7 +91,8 @@ class HBNBCommand(cmd.Cmd):
         args_list = args.split()
         if not args:
             print("** class name missing **")
-        elif args_list[0] not in ["BaseModel", "User", "Place", "State", "City", "Amenity", "Review"]:
+        elif args_list[0] not in ["BaseModel", "User", "Place", "State",
+                                  "City", "Amenity", "Review"]:
             print("** class doesn't exist **")
         elif len(args_list) < 2:
             print("** instance id missing **")
@@ -104,7 +106,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, args):
         """Prints all string representation of all instances"""
-        if args and args not in ["BaseModel", "User", "Place", "State", "City", "Amenity", "Review"]:
+        if args and args not in ["BaseModel", "User", "Place", "State",
+                                 "City", "Amenity", "Review"]:
             print("** class doesn't exist **")
         else:
             all_objects = [str(obj) for obj in storage.all().values()]
@@ -115,7 +118,8 @@ class HBNBCommand(cmd.Cmd):
         args_list = args.split()
         if not args:
             print("** class name missing **")
-        elif args_list[0] not in ["BaseModel", "User", "Place", "State", "City", "Amenity", "Review"]:
+        elif args_list[0] not in ["BaseModel", "User", "Place", "State",
+                                  "City", "Amenity", "Review"]:
             print("** class doesn't exist **")
         elif len(args_list) < 2:
             print("** instance id missing **")
