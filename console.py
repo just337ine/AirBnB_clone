@@ -79,13 +79,6 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
 
-# def complete_show(self, text, line, begidx, endidx):
-#    if not text:
-#       completions = self.valid_classes[:]
-# else:
-# completions = [c for c in self.valid_classes if c.startswith(text)]
-#   return completions 
-
     def do_show(self, line):
         """Prints the string representation of an instance"""
         args_list = line.split()
