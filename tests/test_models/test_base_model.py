@@ -6,6 +6,13 @@ from datetime import datetime
 
 class TestBaseModel(unittest.TestCase):
     """Unittest for BaseModel"""
+    
+
+    def setUp(self):
+        self.model = BaseModel()
+
+    def test_id_is_string(self):
+        self.assertIsInstance(self.model.id, str)
 
     def test_creation(self):
         """Test for checking creation of BaseModel instance"""
