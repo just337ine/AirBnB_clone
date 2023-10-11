@@ -62,8 +62,8 @@ class FileStorage:
                 for key, value in objs.items():
                     cls_name = value["__class__"]
                     # Dynamically import the class based on its name
-                    words = [word.lower() for word in 
-                            re.findall(r'[A-Z][^A-Z]*', cls_name)]
+                    words = [word.lower() for word in
+                             re.findall(r'[A-Z][^A-Z]*', cls_name)]
                     module_name = "models.{}".format('_'.join(words))
                     exec("from {} import {}".format(module_name, cls_name))
                     instance = eval(cls_name)(**value)
