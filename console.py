@@ -144,6 +144,25 @@ class HBNBCommand(cmd.Cmd):
         """Clear the terminal."""
         os.system('cls' if os.name == 'nt' else 'clear')
 
+    def default(self, line):
+        """Method to handle <class name>.<method name>() format."""
+        line_parts = line.split('.')
+        if len(line_parts) != 2:
+            print("** class doesn't exist **")
+            return
+        class_name = line_parts[0]
+        method_name = line_parts[1]
+        # Handle 'all' method
+        if method_name == "all()":
+            if class_name in ["BaseModel", "User", "Place", "State",
+                              "City", "Amenity", "Review"]:
+                objects = storage.all(class_name)
+                list_objs = [str(v) for k, v in
+                             objects.items() if k.startswith(class_name)]
+                print(list_objs)
+            else:
+                print("** class doesn't exist **")                
+                                  
     def help_quit(self):
         """Quit command to exit the program"""
         print("Quit command to exit the program")
