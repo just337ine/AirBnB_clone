@@ -151,7 +151,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
         class_name = line_parts[0]
-        method_name = line_parts[1].split('(')
+        method_and_args = line_parts[1].split('(')
         method_name = method_and_args[0]
         # Handle 'all' method
         if method_name == "all()":
@@ -182,6 +182,17 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
             else:
                 print(storage.all()[key])
+        elif method_name == "destroy":
+            if len(method_and_args) != 2:
+                print("** instance id missing **")
+                return
+            instance_id = method_and_args[1].split(')')[0].replace('"', '')
+            key = "{}.{}".format(class_name, instance_id)
+            if key not in storage.all().keys():
+                print("** no instance found **")
+            else:
+                del storage.all()[key]
+                storage.save()
         else:
             print("** method doesn't exist **")
 
