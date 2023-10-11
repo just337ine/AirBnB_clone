@@ -74,3 +74,21 @@ class FileStorage:
                     FileStorage.__objects[key] = instance
         except FileNotFoundError:
             pass
+
+        def classes(self):
+            """
+            Return a dictionary of available classes for the
+            deserialization process.
+            Update this dictionary as new classes are added.
+            """
+            classes = {
+                    'BaseModel': BaseModel,
+                    'User': User,
+                    'State': State,
+                    'City': City,
+                    'Place': Place,
+                    'Review': Review,
+                    'Amenity': Amenity
+                    }
+            return classes
+
