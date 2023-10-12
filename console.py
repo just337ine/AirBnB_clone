@@ -14,21 +14,11 @@ from models.review import Review
 
 storage = FileStorage()
 storage.reload()
-
-
 class HBNBCommand(cmd.Cmd):
-    """hbnb class definition"""
-    valid_classes = [
-            "BaseModel",
-            "User",
-            "Place",
-            "State",
-            "City",
-            "Amenity",
-            "Review"
-            ]
-    prompt = ' (hbnb) '
+    """hbnb class definition """
+    prompt = '(hbnb) '
 
+    #  _________Commands:
     def do_EOF(self, line):
         """Handle EOF (Ctrl+D) by exiting."""
         print()  # to print a newline
@@ -113,6 +103,18 @@ class HBNBCommand(cmd.Cmd):
             else:
                 del storage.all()[key]
                 storage.save()
+
+    def do_count(self, line):
+        """Count the number of instances of a specific class"""
+        lines = line.split()
+        if not lines:
+            print("** class name missing **")
+        elif lines[0] not in ["BaseModel", "User", "Place", "State", "City", "Amenity", "Review"]:
+            print("** class doesn't exist **")
+        else:
+            class_name = lines[0]
+            count = sum(1 for key in storage.all() if key.split('.')[0] == class_name)
+            print(count)
 
     def do_all(self, line):
         """Prints all string representation of all instances"""
@@ -228,6 +230,11 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** method doesn't exist **")
 
+    def emptyline(self):
+        """Do nothing on an empty input line"""
+        pass
+
+    # __________Helps:
     def help_quit(self):
         """Quit command to exit the program"""
         print("Quit command to exit the program")
@@ -236,9 +243,6 @@ class HBNBCommand(cmd.Cmd):
         """Help for 'EOF' command."""
         print("Quit the command loop by typing EOF or Ctrl+D.")
 
-    def emptyline(self):
-        """Do nothing on an empty input line"""
-        pass
 
 
 if __name__ == '__main__':
