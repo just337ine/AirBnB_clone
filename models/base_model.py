@@ -24,6 +24,7 @@ class BaseModel:
             # Set 'id' if it exists in kwargs, or generate a new one
             if 'id' not in kwargs:
                 self.id = str(uuid4())
+            storage.new(self)
         else:
             # Generate an ID as a string
             self.id = str(uuid.uuid4())
