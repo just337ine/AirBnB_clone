@@ -20,22 +20,22 @@ class HBNBCommand(cmd.Cmd):
 
     #  _________Commands:
     def do_EOF(self, line):
-        """Handle EOF (Ctrl+D) by exiting."""
+        """
+        Handle EOF (Ctrl+D) by exiting.
+        """
         print()  # to print a newline
         return True
 
     def do_quit(self, line):
-        """Exit the command loop."""
+        """
+        Exit the command loop.
+        """
         return True
 
-    def do_shell(self, line):
-        """Run a shell command"""
-        output = os.popen(line).read()
-        print(output)
-        self.last_output = output
-
     def do_create(self, line):
-        """Creates a new instance of BaseModel or User"""
+        """
+        Creates a new instance of BaseModel or User
+        """
         if not line:
             print("** class name missing **")
         elif line == "BaseModel":
@@ -70,7 +70,9 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
     def do_show(self, line):
-        """Prints the string representation of an instance"""
+        """
+        Prints the string representation of an instance
+        """
         args_list = line.split()
         if not line:
             print("** class name missing **")
@@ -87,7 +89,9 @@ class HBNBCommand(cmd.Cmd):
                 print(storage.all()[key])
 
     def do_destroy(self, line):
-        """Deletes an instance based on the class name and id"""
+        """
+        Deletes an instance based on the class name and id
+        """
         args_list = line.split()
         if not line:
             print("** class name missing **")
@@ -105,7 +109,9 @@ class HBNBCommand(cmd.Cmd):
                 storage.save()
 
     def do_count(self, line):
-        """Count the number of instances of a specific class"""
+        """
+        Count the number of instances of a specific class
+        """
         lines = line.split()
         if not lines:
             print("** class name missing **")
@@ -117,7 +123,9 @@ class HBNBCommand(cmd.Cmd):
             print(count)
 
     def do_all(self, line):
-        """Prints all string representation of all instances"""
+        """
+        Prints all string representation of all instances
+        """
         if line and line not in ["BaseModel", "User", "Place", "State",
                                  "City", "Amenity", "Review"]:
             print("** class doesn't exist **")
@@ -126,7 +134,9 @@ class HBNBCommand(cmd.Cmd):
             print(all_objects)
 
     def do_update(self, line):
-        """Updates an instance based on the class name and id"""
+        """
+        Updates an instance based on the class name and id
+        """
         args_list = line.split()
         if not line:
             print("** class name missing **")
@@ -153,11 +163,15 @@ class HBNBCommand(cmd.Cmd):
                     storage.all()[key].save()
 
     def do_clear(self, line):
-        """Clear the terminal."""
+        """
+        Clear the terminal.
+        """
         os.system('cls' if os.name == 'nt' else 'clear')
 
     def default(self, line):
-        """Method to handle <class name>.<method name>() format."""
+        """
+        Method to handle <class name>.<method name>() format.
+        """
         line_parts = line.split('.')
         if len(line_parts) != 2:
             print("** class doesn't exist **")
@@ -236,12 +250,16 @@ class HBNBCommand(cmd.Cmd):
 
     # __________Helps:
     def help_quit(self):
-        """Quit command to exit the program"""
-        print("Quit command to exit the program")
+        """
+        Quit command to exit the program
+        """
+        print("\nQuit command to exit the program\n")
 
     def help_EOF(self):
-        """Help for 'EOF' command."""
-        print("Quit the command loop by typing EOF or Ctrl+D.")
+        """
+        Help for 'EOF' command.
+        """
+        print("\nQuit the command loop by typing EOF or Ctrl+D.\n")
 
 
 
