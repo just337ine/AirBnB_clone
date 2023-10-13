@@ -14,6 +14,8 @@ from models.review import Review
 
 storage = FileStorage()
 storage.reload()
+
+
 class HBNBCommand(cmd.Cmd):
     """hbnb class definition """
     prompt = '(hbnb) '
@@ -115,11 +117,15 @@ class HBNBCommand(cmd.Cmd):
         lines = line.split()
         if not lines:
             print("** class name missing **")
-        elif lines[0] not in ["BaseModel", "User", "Place", "State", "City", "Amenity", "Review"]:
+        elif lines[0] not in ["BaseModel", "User", "Place", "State",
+                              "City", "Amenity", "Review"]:
             print("** class doesn't exist **")
         else:
             class_name = lines[0]
-            count = sum(1 for key in storage.all() if key.split('.')[0] == class_name)
+            count = sum(
+                    1 for key in storage.all()
+                    if key.split('.')[0] == class_name
+                    )
             print(count)
 
     def do_all(self, line):
@@ -260,7 +266,6 @@ class HBNBCommand(cmd.Cmd):
         Help for 'EOF' command.
         """
         print("\nQuit the command loop by typing EOF or Ctrl+D.\n")
-
 
 
 if __name__ == '__main__':
