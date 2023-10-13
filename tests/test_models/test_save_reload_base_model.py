@@ -2,6 +2,7 @@ import unittest
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 
+
 class TestFileStorage(unittest.TestCase):
     def setUp(self):
         self.storage = FileStorage()
@@ -43,6 +44,6 @@ class TestFileStorage(unittest.TestCase):
         key = "{}.{}".format(obj.__class__.__name__, obj.id)
         self.assertIn(key, new_storage.all())
 
+
 if __name__ == '__main__':
     unittest.main()
-
