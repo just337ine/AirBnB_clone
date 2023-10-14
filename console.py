@@ -25,7 +25,7 @@ class HBNBCommand(cmd.Cmd):
         """
         Handle EOF (Ctrl+D) by exiting.
         """
-        print()  # to print a newline
+        print()
         return True
 
     def do_quit(self, line):
@@ -168,11 +168,11 @@ class HBNBCommand(cmd.Cmd):
                     setattr(storage.all()[key], attr_name, attr_value)
                     storage.all()[key].save()
 
-    def do_clear(self, line):
-        """
-        Clear the terminal.
-        """
-        os.system('cls' if os.name == 'nt' else 'clear')
+#    def do_clear(self, line):
+#        """
+#        Clear the terminal.
+#        """
+#        os.system('cls' if os.name == 'nt' else 'clear')
 
     def default(self, line):
         """
