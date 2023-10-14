@@ -21,16 +21,16 @@ class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
 
     #  _________Commands:
-    def do_EOF(self, line):
+    def do_quit(self, line):
         """
-        Handle EOF (Ctrl+D) by exiting.
+        Exit the command loop
         """
         print()
         return True
 
-    def do_quit(self, line):
+    def do_EOF(self, line):
         """
-        Exit the command loop.
+        Handle EOF (ctrl+D) by exiting
         """
         return True
 
@@ -73,7 +73,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, line):
         """
-        Prints the string representation of an instance
+            Prints the string representation of an instance
         """
         args_list = line.split()
         if not line:
@@ -92,7 +92,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, line):
         """
-        Deletes an instance based on the class name and id
+            Deletes an instance based on the class name and id
         """
         args_list = line.split()
         if not line:
@@ -112,7 +112,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_count(self, line):
         """
-        Count the number of instances of a specific class
+            Count the number of instances of a specific class
         """
         lines = line.split()
         if not lines:
@@ -176,7 +176,7 @@ class HBNBCommand(cmd.Cmd):
 
     def default(self, line):
         """
-        Method to handle <class name>.<method name>() format.
+            Method to handle <class name>.<method name>() format.
         """
         line_parts = line.split('.')
         if len(line_parts) != 2:
@@ -256,16 +256,12 @@ class HBNBCommand(cmd.Cmd):
 
     # __________Helps:
     def help_quit(self):
-        """
-        Quit command to exit the program
-        """
-        print("\nQuit command to exit the program\n")
+        print("Quit command to exit the program")
+        print()
 
     def help_EOF(self):
-        """
-        Help for 'EOF' command.
-        """
-        print("\nQuit the command loop by typing EOF or Ctrl+D.\n")
+        print("Quit the command loop by typing EOF or Ctrl+D.")
+        print()
 
 
 if __name__ == '__main__':
