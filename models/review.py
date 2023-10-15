@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+class review for user review
+"""
 from models.base_model import BaseModel
 
 

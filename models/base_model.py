@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+Class Base model that do everything
+"""
 import uuid
 from datetime import datetime
 from models import storage

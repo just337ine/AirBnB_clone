@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+class user for user data
+"""
 
 from models.base_model import BaseModel
 

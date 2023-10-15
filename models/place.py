@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+Class place for general features
+"""
 from models.base_model import BaseModel
 
 
